@@ -1,0 +1,138 @@
+body{
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+#app{
+    @import './variables.scss';
+    .layout-container{
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+    .header-container{
+        position: fixed;
+        width: 100%;
+        height: $headerHeight;
+        background-color: $primary;
+        box-shadow: 0 1px $shadowBlur $shadowSpread $shadowColor;
+        z-index: 1002;
+    }
+    .main-container{
+        width: 100%;
+        height: 100%;;
+    }
+    .sidebar-container{
+        z-index: 1001;
+        box-shadow: 0 5px $shadowBlur $shadowSpread $shadowColor;
+        transition: width $transitionTime;
+        position: fixed;
+        width: $sideBarOpenWidth;
+        top: $headerHeight + 1px;
+        left: 0;
+        bottom: 0;
+        overflow: hidden;
+        .el-scrollbar__view {
+            height: 100%;
+        }
+        .el-menu{
+            width: 100%;
+            border: none;
+        }
+        .scrollbar-wrapper{
+            overflow-x: hidden;
+        }
+    }
+    .sidebar-collapse{
+        transition: width $transitionTime;
+        width: $sideBarCloseWidth;
+    }
+    .pageView-container{
+        position: relative;
+        top: $headerHeight + 1px;
+        transition: margin-left $transitionTime;
+        margin-left: $sideBarOpenWidth;
+    }
+    .pageView-collapse{
+        transition: margin-left $transitionTime;
+        margin-left: $sideBarCloseWidth;
+    }
+    .tabs-container{
+        padding:  $tabsPadding;
+        .el-tabs__header{
+            margin: 0;
+            background-color: rgba($color: $primary, $alpha: 0.1);
+            border: none
+        }
+        .el-tabs__content{
+            display: none;
+        }
+        .el-tabs__item{
+            color: #ffffff;
+            border-radius: 8%;
+            background-color: $primary;
+            &.is-active{
+                color: #ffffff;
+                background-color: $positive;
+            }
+        }
+    }
+    .user-tabs-container{
+        .el-tabs__header{
+            margin: 0;
+            background-color: rgba($color: $primary, $alpha: 0.1);
+            border: none
+        }
+        .el-tabs__content{
+            padding: 0;
+        }
+        .el-tabs__item{
+            color: #ffffff;
+            border-radius: 8%;
+            background-color: $primary;
+            &.is-active{
+                color: #ffffff;
+                background-color: $positive;
+            }
+        }
+    }
+    .pages-container{
+        padding: 0 $pagesPadding;
+        min-height: calc(100vh - #{$headerHeight} - 70px - #{$footerHeight});
+    }
+    .footer-container{
+        height: $footerHeight;
+    }
+    .actions-button{
+        background-color: rgba($color: $primary, $alpha: 0);
+        border: none;
+        color: #ffffff;
+        height: $headerHeight - 10px ;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        span{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        &:hover{
+            background-color: rgba($color: #ffffff, $alpha: 0.3);
+        }
+        i{
+            font-size: 22px;
+        }
+    }
+}
+
+#nprogress{
+    @import './variables.scss';
+    .bar{
+        background: $negative !important;
+    }
+    .peg{
+        box-shadow: 0 0 10px $negative, 0 0 5px $negative !important;
+    }
+    .spinner-icon{
+        border-top-color: $negative !important;
+        border-left-color: $negative !important;
+    }
+} 
